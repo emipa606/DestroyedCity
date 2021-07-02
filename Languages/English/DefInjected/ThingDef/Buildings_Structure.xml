@@ -1,50 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <Plane.label>air plane crash</Plane.label>
   <Plane.description>An old crash site, deconstruct for resources.</Plane.description>
-
   <Careast.label>Old Car</Careast.label>
   <Careast.description>A old car, deconstruct for resources.</Careast.description>
-
   <tirestack.label>Tires</tirestack.label>
   <tirestack.description>A stack of rotten tires</tirestack.description>
   <tirestack_Blueprint_Install.label>Tires (blueprint)</tirestack_Blueprint_Install.label>
-
-
   <!-- furniture -->
-
   <shelves.label>Old Shelves</shelves.label>
   <shelves.description>Old shelves, deconstruct for resources.</shelves.description>
-
   <Trash.label>Trash</Trash.label>
   <Trash.description>Trash from a long gone civilization</Trash.description>
-
-
   <!-- crates -->
-
   <crateA.label>Crate</crateA.label>
   <crateA.description>A crate with a random resource inside</crateA.description>
   <crateA_Blueprint_Install.label>Crate (blueprint)</crateA_Blueprint_Install.label>
-
   <crateB.label>Crate</crateB.label>
   <crateB.description>A crate with a random resource inside</crateB.description>
   <crateB_Blueprint_Install.label>Crate (blueprint)</crateB_Blueprint_Install.label>
-
   <crateC.label>Crate</crateC.label>
   <crateC.description>A crate with a random resource inside</crateC.description>
   <crateC_Blueprint_Install.label>Crate (blueprint)</crateC_Blueprint_Install.label>
-
   <crateD.label>Crate</crateD.label>
   <crateD.description>A crate with a random resource inside</crateD.description>
   <crateD_Blueprint_Install.label>Crate (blueprint)</crateD_Blueprint_Install.label>
-
-
   <!-- Seasonal -->
-
   <xmasreef.label>Festive Reef</xmasreef.label>
   <xmasreef.description>A festive reef, livens up any area</xmasreef.description>
   <xmasreef_Blueprint_Install.label>Festive Reef (blueprint)</xmasreef_Blueprint_Install.label>
-
-
 </LanguageData>

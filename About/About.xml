@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>Destroyed City (Continued)</name>
   <packageId>Mlie.DestroyedCity</packageId>
@@ -10,35 +10,38 @@
   </supportedVersions>
   <modDependencies />
   <loadAfter />
-  <description>Update of RK Skullers mod
+  <description>[img]https://i.imgur.com/WAEzk68.png[/img]
+Update of RK Skullers mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=787532364
 
-[img]https://i.imgur.com/GYswkZ7.png[/img]
-
-Support-chat:
-https://invite.gg/mlie
-
-Non-steam version:
-https://github.com/emipa606/DestroyedCity
-
 - Not sure if everything works as before since the code has change massively since A15 but it seems to work ok
+
+[img]https://i.imgur.com/7Gzt3Rg.png[/img]
+
+[table]
+	[tr]
+		[td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+		[td][url=https://github.com/emipa606/DestroyedCity][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+	[/tr]
+[/table]
 	
---- Original Description ---
+[img]https://i.imgur.com/NOW7jU1.png[/img]
+
 Mod that adds more destroyed buildings, adds a custom difficulty that increases the raid population growth rate and lowers their health, adds two new floor blocks "Road and Sidewalk, and increased ore and plant vegetation.
 
 Update 1.31
--added a few new items to map gen
--added a toilet
+-added a few new items to map gen 
+-added a toilet 
 -improved road texture edge smooths in with terrain
 -modified map gen a bit, less buildings in mountains
 
 Update 1.3
--Added towns to map gen
+-Added towns to map gen 
 -added a new textured road
 -released a less cluttered mod called Destroyed towns and a more cluttered mod called Destroyed City 2 Extreme
 
 Update 1.27
--Reduced the centipede spawn rate even more "I hope !!!"
+-Reduced the centipede spawn rate even more "I hope !!!" 
 
 Update 1.26
 -added more goodies to find
@@ -54,14 +57,14 @@ Update 1.26
 Update 1.25
 -removed roads from map generation
 -lowered building spawns
--Added first custom generated objects with textures to the Map Gen
-*added 2x2 trash mound
-*added shelves to some buildings
-*added rusty cars
-*(hidden Seasonal) object to map Gen, its kinda rare
-*objects can be deconstructed/scrapped for resources, time required to deconstruct can vary by the type of object
+-Added first custom generated objects with textures to the Map Gen 
+       *added 2x2 trash mound
+       *added shelves to some buildings
+       *added rusty cars 
+       *(hidden Seasonal) object to map Gen, its kinda rare 
+       *objects can be deconstructed/scrapped for resources, time required to deconstruct can vary by the type of                                                             object
 -Added a Seasonal easter egg to the map Gen.
--more customized buildings and objects to come.....
+-more customized buildings and objects to come..... 
 
 Update 1.23:
 -urban horde difficulty was lowered a little
@@ -70,38 +73,51 @@ Update 1.23:
 -minor change to threat generation
 
 Update 1.21:
--Minor bug update to map generation
+-Minor bug update to map generation 
 
-Update 1.20:
+Update 1.20: 
 -Added roads to the map generation
 -Added new ruins to the map generation
--Reduced generation of walls
--Increased vegetation spawn on each biome by x2
+-Reduced generation of  walls
+-Increased vegetation spawn on each biome by x2 
 -Increase ore chunk spawn by 20-30%
 -Added two new floor placement blocks
-*Roads which have 0 beauty rating and are cheap to build
-*Sidewalks similar to stats as Roads and is little darker than cement
+           *Roads which have 0 beauty rating and are cheap to build
+           *Sidewalks similar to stats as Roads and is little darker than cement
 -Reduced overall clutter to the map
 -Save game friendly you will have access to the new floors, but must restart to see the new map generation
 - This mod may conflict with other map generation mods
--if you have another mod that changes resource spawn place it before this mod
+-if you have another mod that changes resource spawn place it before this mod  
 - this mod will work with my x3 ore drop mod
--more objects planned including but not limited to: (ruined Cars, railroad tracks w/cars, pipelines, lakes, lootable trash, crates, scorched earth, and more......)
+-more objects planned including but not limited to: (ruined Cars, railroad tracks w/cars, pipelines, lakes, lootable trash, crates, scorched earth, and more......) 
 
-Update 1.11 :
+Update 1.11 : 
 -Shrunk the centipedes, (not the kids.)
 
 Update 1.10 :
 -Made some changes to the mechanoids to make them a little more fair (lowered their combat power)
 -Changed the scale of mechanoid hostiles :)... (centipede is 5X bigger)
 -added more relic structures, im working on getting rid of walls
-- made some adjustments to ruin amounts, if you start in a mountainous region buildings are closer together than in a barrens region
+- made some adjustments to ruin amounts, if you start in a mountainous region buildings are closer together than in                 a barrens region
 
-Update 1.01 :
-*Adds higher structure count by almost double
-*Stopped buildings from spawning into or clipping mountains
-* compatible with EDB Carefully Prepare mod
-* Save friendly, however to see changes you must start over :(
+Update 1.01 : 
+                       *Adds higher structure count by almost double
+                       *Stopped buildings from spawning into or clipping mountains
+                       * compatible with EDB Carefully Prepare mod
+                       * Save friendly, however to see changes you must start over :(                           
 
--this mod may conflict with other map generator mods</description>
+-this mod may conflict with other map generator mods
+
+
+[img]https://i.imgur.com/Rs6T6cr.png[/img]
+[list]
+[*] See if the the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] and command Ctrl+F12
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[/list]
+</description>
 </ModMetaData>
+

@@ -1,37 +1,21 @@
-This code is released under the Creative Commons License Attribution-ShareAlike 4.0 International
+MIT License
 
-You are free to:
+Copyright (c) 2020 Mlie
 
-Share — copy and redistribute the material in any medium or format
-Adapt — remix, transform, and build upon the material
-for any purpose, even commercially.
-The licensor cannot revoke these freedoms as long as you follow the license terms.
-Under the following terms:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
-
-
-Notices:
-
-You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.
-No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material.
-
-
-The full license text can be found here:
-http://creativecommons.org/licenses/by-sa/4.0/
-
-
-Short Version:
-You can do nearly everything you want, but must credit the original author and redistribute it under the same license.
-
-
-
-
-Exception:
-The licensor hereby grands the legal firm Ludeon Studios, lead by Tynan Sylvester, full rights under the Creative Common Zero License. Ludeon may include content derived from this in official releases of RimWorld without owing money or credit to the licensor.
-
-The full license text can be found here:
-http://creativecommons.org/publicdomain/zero/1.0/
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
