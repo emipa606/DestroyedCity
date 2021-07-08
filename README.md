@@ -22,7 +22,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=787532364
 ![Image](https://i.imgur.com/NOW7jU1.png)
 
 
-Mod that adds more destroyed buildings, adds a custom difficulty that increases the raid population growth rate and lowers their health, adds two new floor blocks "Road and Sidewalk, and increased ore and plant vegetation.
+Mod that adds more destroyed buildings, adds a custom difficulty that increases the raid population growth rate and lowers their health, adds two new floor blocks &quot;Road and Sidewalk, and increased ore and plant vegetation.
 
 Update 1.31
 -added a few new items to map gen 
@@ -36,7 +36,7 @@ Update 1.3
 -released a less cluttered mod called Destroyed towns and a more cluttered mod called Destroyed City 2 Extreme
 
 Update 1.27
--Reduced the centipede spawn rate even more "I hope !!!" 
+-Reduced the centipede spawn rate even more &quot;I hope !!!&quot; 
 
 Update 1.26
 -added more goodies to find
@@ -44,9 +44,9 @@ Update 1.26
 -tweaked scattered ruins a bit
 
 Update 1.26
--reduced spawn of large centipedes by ALOT "about 1 for every 10 before", other mechs were weakened by half
+-reduced spawn of large centipedes by ALOT &quot;about 1 for every 10 before&quot;, other mechs were weakened by half
 - cut the spawn of more distructive hostile by half, be warned weaker ones become more numerous so expect hordes.
--changed the shelf found in ruins to a more "realistic" game looking texture
+-changed the shelf found in ruins to a more &quot;realistic&quot; game looking texture
 
 
 Update 1.25
@@ -114,6 +114,7 @@ Update 1.01 :
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
+
 
 
 

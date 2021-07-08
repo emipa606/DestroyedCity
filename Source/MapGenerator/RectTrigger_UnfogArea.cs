@@ -54,7 +54,7 @@ namespace MapGenerator
         {
             Find.SignalManager.SendSignal(new Signal(signalTag, p.Named("SUBJECT")));
             FloodFillerFog.FloodUnfog(p.Position, p.Map);
-            p.Position.GetRoom(p.Map).Notify_RoomShapeOrContainedBedsChanged();
+            p.Position.GetRoom(p.Map).Notify_RoomShapeChanged();
             if (!destroyIfUnfogged && !Destroyed)
             {
                 Destroy();
@@ -77,7 +77,7 @@ namespace MapGenerator
 
             foreach (var room in hashSet)
             {
-                room.Notify_RoomShapeOrContainedBedsChanged();
+                room.Notify_RoomShapeChanged();
             }
         }
 
