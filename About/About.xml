@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>Destroyed City (Continued)</name>
   <packageId>Mlie.DestroyedCity</packageId>
@@ -11,24 +11,28 @@
   </supportedVersions>
   <modDependencies />
   <loadAfter />
-  <description>[img]https://i.imgur.com/WAEzk68.png[/img]
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
 Update of RK Skullers mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=787532364
 
 - Not sure if everything works as before since the code has change massively since A15 but it seems to work ok
 
-[img]https://i.imgur.com/7Gzt3Rg.png[/img]
+[img]https://i.imgur.com/pufA0kM.png[/img]
 
 [table]
 	[tr]
 		[td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
 		[td][url=https://github.com/emipa606/DestroyedCity][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
-	[/tr]
+    [/tr]
+    [tr]
+        [td][img]https://i.imgur.com/WjDSfUn.png[/img][/td]
+        [td][img]https://i.imgur.com/Be8E2qJ.png[/img][/td]
+    [/tr]
 [/table]
 	
-[img]https://i.imgur.com/NOW7jU1.png[/img]
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
 
-Mod that adds more destroyed buildings, adds a custom difficulty that increases the raid population growth rate and lowers their health, adds two new floor blocks &quot;Road and Sidewalk, and increased ore and plant vegetation.
+Mod that adds more destroyed buildings, adds a custom difficulty that increases the raid population growth rate and lowers their health, adds two new floor blocks "Road and Sidewalk, and increased ore and plant vegetation.
 
 Update 1.31
 -added a few new items to map gen 
@@ -42,7 +46,7 @@ Update 1.3
 -released a less cluttered mod called Destroyed towns and a more cluttered mod called Destroyed City 2 Extreme
 
 Update 1.27
--Reduced the centipede spawn rate even more &quot;I hope !!!&quot; 
+-Reduced the centipede spawn rate even more "I hope !!!" 
 
 Update 1.26
 -added more goodies to find
@@ -50,9 +54,9 @@ Update 1.26
 -tweaked scattered ruins a bit
 
 Update 1.26
--reduced spawn of large centipedes by ALOT &quot;about 1 for every 10 before&quot;, other mechs were weakened by half
+-reduced spawn of large centipedes by ALOT "about 1 for every 10 before", other mechs were weakened by half
 - cut the spawn of more distructive hostile by half, be warned weaker ones become more numerous so expect hordes.
--changed the shelf found in ruins to a more &quot;realistic&quot; game looking texture
+-changed the shelf found in ruins to a more "realistic" game looking texture
 
 
 Update 1.25
@@ -110,7 +114,7 @@ Update 1.01 :
 -this mod may conflict with other map generator mods
 
 
-[img]https://i.imgur.com/Rs6T6cr.png[/img]
+[img]https://i.imgur.com/PwoNOj4.png[/img]
 [list]
 [*] See if the the error persists if you just have this mod and its requirements active.
 [*] If not, try adding your other mods until it happens again.
@@ -119,6 +123,5 @@ Update 1.01 :
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
 [/list]
-
 </description>
 </ModMetaData>
