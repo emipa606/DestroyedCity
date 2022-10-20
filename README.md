@@ -1,28 +1,19 @@
 # DestroyedCity
 
-![Image](https://i.imgur.com/WAEzk68.png)
+![Image](https://i.imgur.com/buuPQel.png)
 
 Update of RK Skullers mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=787532364
 
 - Not sure if everything works as before since the code has change massively since A15 but it seems to work ok
 
-![Image](https://i.imgur.com/7Gzt3Rg.png)
+![Image](https://i.imgur.com/pufA0kM.png)
 
-
-[table]
-	[tr]
-		[td]https://invite.gg/Mlie]![Image](https://i.imgur.com/zdzzBrc.png)
-[/td]
-		[td]https://github.com/emipa606/DestroyedCity]![Image](https://i.imgur.com/kTkpTOE.png)
-[/td]
-	[/tr]
-[/table]
 	
-![Image](https://i.imgur.com/NOW7jU1.png)
+![Image](https://i.imgur.com/Z4GOv8H.png)
 
 
-Mod that adds more destroyed buildings, adds a custom difficulty that increases the raid population growth rate and lowers their health, adds two new floor blocks &quot;Road and Sidewalk, and increased ore and plant vegetation.
+Mod that adds more destroyed buildings, adds a custom difficulty that increases the raid population growth rate and lowers their health, adds two new floor blocks "Road and Sidewalk, and increased ore and plant vegetation.
 
 Update 1.31
 -added a few new items to map gen 
@@ -36,7 +27,7 @@ Update 1.3
 -released a less cluttered mod called Destroyed towns and a more cluttered mod called Destroyed City 2 Extreme
 
 Update 1.27
--Reduced the centipede spawn rate even more &quot;I hope !!!&quot; 
+-Reduced the centipede spawn rate even more "I hope !!!" 
 
 Update 1.26
 -added more goodies to find
@@ -44,9 +35,9 @@ Update 1.26
 -tweaked scattered ruins a bit
 
 Update 1.26
--reduced spawn of large centipedes by ALOT &quot;about 1 for every 10 before&quot;, other mechs were weakened by half
+-reduced spawn of large centipedes by ALOT "about 1 for every 10 before", other mechs were weakened by half
 - cut the spawn of more distructive hostile by half, be warned weaker ones become more numerous so expect hordes.
--changed the shelf found in ruins to a more &quot;realistic&quot; game looking texture
+-changed the shelf found in ruins to a more "realistic" game looking texture
 
 
 Update 1.25
@@ -104,7 +95,7 @@ Update 1.01 :
 -this mod may conflict with other map generator mods
 
 
-![Image](https://i.imgur.com/Rs6T6cr.png)
+![Image](https://i.imgur.com/PwoNOj4.png)
 
 
 
