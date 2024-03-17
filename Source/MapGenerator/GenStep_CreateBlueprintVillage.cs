@@ -13,7 +13,7 @@ public class GenStep_CreateBlueprintVillage : GenStep_Scatterer
 
     private readonly IntRange ruinOffsetVerticalRange = new IntRange(5, 15);
 
-    private readonly List<IntVec3> usedCells = new List<IntVec3>();
+    private readonly List<IntVec3> usedCells = [];
 
     private List<Pawn> allSpawnedPawns;
 
@@ -329,7 +329,7 @@ public class GenStep_CreateBlueprintVillage : GenStep_Scatterer
         }
         else
         {
-            var a = new IntVec3(mapRect.BottomLeft.x, mapRect.TopRight.y, mapRect.TopRight.z);
+            var a = new IntVec3(mapRect.minX, 0, mapRect.maxZ);
             foreach (var c in mapRect)
             {
                 if (!CheckCell(c, map))
@@ -442,7 +442,7 @@ public class GenStep_CreateBlueprintVillage : GenStep_Scatterer
         else
         {
             var key = blueprint.floorData.ElementAt(itemPos).ToString();
-            result = !blueprint.floorLegend.ContainsKey(key) ? null : blueprint.floorLegend[key];
+            result = blueprint.floorLegend.GetValueOrDefault(key);
         }
 
         return result;
@@ -460,7 +460,7 @@ public class GenStep_CreateBlueprintVillage : GenStep_Scatterer
         {
             var key = blueprint.buildingData.ElementAt(itemPos).ToString();
 
-            result = !blueprint.buildingLegend.ContainsKey(key) ? null : blueprint.buildingLegend[key];
+            result = blueprint.buildingLegend.GetValueOrDefault(key);
         }
 
         return result;
@@ -478,7 +478,7 @@ public class GenStep_CreateBlueprintVillage : GenStep_Scatterer
         {
             var key = blueprint.buildingData.ElementAt(itemPos).ToString();
 
-            result = !blueprint.rotationLegend.ContainsKey(key) ? Rot4.Invalid : blueprint.rotationLegend[key];
+            result = !blueprint.rotationLegend.TryGetValue(key, out var value) ? Rot4.Invalid : value;
         }
 
         return result;
@@ -495,7 +495,7 @@ public class GenStep_CreateBlueprintVillage : GenStep_Scatterer
         else
         {
             var key = blueprint.itemData.ElementAt(itemPos).ToString();
-            result = !blueprint.itemLegend.ContainsKey(key) ? null : blueprint.itemLegend[key];
+            result = blueprint.itemLegend.GetValueOrDefault(key);
         }
 
         return result;
@@ -513,7 +513,7 @@ public class GenStep_CreateBlueprintVillage : GenStep_Scatterer
         {
             var key = blueprint.pawnData.ElementAt(itemPos).ToString();
 
-            result = !blueprint.pawnLegend.ContainsKey(key) ? null : blueprint.pawnLegend[key];
+            result = blueprint.pawnLegend.GetValueOrDefault(key);
         }
 
         return result;
@@ -687,7 +687,7 @@ public class GenStep_CreateBlueprintVillage : GenStep_Scatterer
 
             if (allSpawnedPawns == null)
             {
-                allSpawnedPawns = new List<Pawn>();
+                allSpawnedPawns = [];
             }
 
             allSpawnedPawns.Add(pawn);

@@ -12,7 +12,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
 
     private readonly IntRange ruinOffsetVerticalRange = new IntRange(5, 15);
 
-    private readonly List<IntVec3> usedCells = new List<IntVec3>();
+    private readonly List<IntVec3> usedCells = [];
 
     private int ruinCountDown;
 

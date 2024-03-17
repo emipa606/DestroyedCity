@@ -6,23 +6,28 @@ namespace MapGenerator;
 
 public class MapGeneratorBlueprintDef : Def
 {
+    public readonly ThingDef buildingMaterial = null;
+
+    public readonly float chance = 1f;
+
+    public readonly FactionDef factionDef = null;
+
+    public readonly FactionSelection factionSelection = FactionSelection.none;
+
+    public readonly float itemSpawnChance = 0f;
+
+    public readonly bool mapCenterBlueprint = false;
+
+    public readonly float pawnSpawnChance = 0f;
     public string buildingData;
 
     //public LetterType TriggerLetterType = 1;
 
     public Dictionary<string, ThingDef> buildingLegend;
 
-    public ThingDef buildingMaterial = null;
-
     public bool canHaveHoles;
 
-    public float chance = 1f;
-
     public bool createTrigger;
-
-    public FactionDef factionDef = null;
-
-    public FactionSelection factionSelection = FactionSelection.none;
 
     public string floorData;
 
@@ -32,15 +37,9 @@ public class MapGeneratorBlueprintDef : Def
 
     public Dictionary<string, ThingDef> itemLegend;
 
-    public float itemSpawnChance = 0f;
-
-    public bool mapCenterBlueprint = false;
-
     public string pawnData;
 
     public Dictionary<string, PawnKindDef> pawnLegend;
-
-    public float pawnSpawnChance = 0f;
 
     public Dictionary<string, Rot4> rotationLegend;
 
