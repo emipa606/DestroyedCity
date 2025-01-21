@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <MapGeneratorDef ParentName="MapCommonBase">
+    <defName>MainMapGenerator</defName>
+    <genSteps>
+      <li>ScatterRuinsSimple</li>
+      <li>ScatterBlueprintSimple</li>
+      <li>ScatterBlueprintVillage</li>
+      <li>ScatterShrines</li>
+    </genSteps>
+  </MapGeneratorDef>
+  <!-- Empty ruins -->
+  <GenStepDef>
+    <defName>ScatterRuinsSimple</defName>
+    <order>400</order>
+    <genStep Class="GenStep_ScatterRuinsSimple">
+      <countPer10kCellsRange>
+        <min>5</min>
+        <max>20</max>
+      </countPer10kCellsRange>
+    </genStep>
+  </GenStepDef>
+  <!-- Blueprint ruins (single buildings) -->
+  <GenStepDef>
+    <defName>ScatterBlueprintSimple</defName>
+    <order>300</order>
+    <genStep Class="MapGenerator.Genstep_CreateBlueprintSingle">
+      <countPer10kCellsRange>
+        <min>35</min>
+        <max>40</max>
+      </countPer10kCellsRange>
+      <validators>
+        <li Class="ScattererValidator_NoNonNaturalEdifices">
+          <radius>2</radius>
+        </li>
+      </validators>
+    </genStep>
+  </GenStepDef>
+  <!-- Blueprint ruins (village) -->
+  <GenStepDef>
+    <defName>ScatterBlueprintVillage</defName>
+    <order>450</order>
+    <genStep Class="MapGenerator.Genstep_CreateBlueprintVillage">
+      <countPer10kCellsRange>
+        <min>0.03</min>
+        <max>0.09</max>
+      </countPer10kCellsRange>
+      <ruinCountRange>
+        <min>2</min>
+        <max>5</max>
+      </ruinCountRange>
+      <ruinDistanceRange>
+        <min>5</min>
+        <max>15</max>
+      </ruinDistanceRange>
+      <ruinOffsetHorizontalRange>
+        <min>5</min>
+        <max>15</max>
+      </ruinOffsetHorizontalRange>
+      <ruinOffsetVerticalRange>
+        <min>5</min>
+        <max>15</max>
+      </ruinOffsetVerticalRange>
+    </genStep>
+  </GenStepDef>
+  <!-- Ancient casket shrines -->
+  <GenStepDef>
+    <defName>ScatterShrines</defName>
+    <order>225</order>
+    <genStep Class="GenStep_ScatterShrines">
+      <countPer10kCellsRange>
+        <min>.5</min>
+        <max>2</max>
+      </countPer10kCellsRange>
+    </genStep>
+  </GenStepDef>
+</Defs>

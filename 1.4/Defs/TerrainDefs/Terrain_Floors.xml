@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- ================= Misc ================= -->
+  <TerrainDef ParentName="FloorBase">
+    <defName>Road</defName>
+    <label>Road</label>
+    <edgeType>FadeRough</edgeType>
+    <renderPrecedence>246</renderPrecedence>
+    <description>An old cracked road</description>
+    <texturePath>Things/Building/crackedroad_Atlas</texturePath>
+    <statBases>
+      <Beauty>0</Beauty>
+      <WorkToMake>100</WorkToMake>
+    </statBases>
+    <costList>
+      <Steel>1</Steel>
+    </costList>
+    <constructEffect>ConstructMetal</constructEffect>
+  </TerrainDef>
+</Defs>
