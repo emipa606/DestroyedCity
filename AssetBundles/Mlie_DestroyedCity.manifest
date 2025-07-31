@@ -1,0 +1,32 @@
+ManifestFileVersion: 0
+CRC: 2322140644
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 99a5447f038ce5369518f49d3b0cc1a7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 99a5447f038ce5369518f49d3b0cc1a7
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/xmasreef_Atlas.png
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/plane_Atlas.png
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/tires_Atlas.png
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/Corel Auto-Preserve/rubble_Atlas.png
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/shelves_Atlas.png
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/toilet_Atlas.png
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/crackedroad_Atlas.png
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/Corel Auto-Preserve/careast_Atlas.jpg
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/crate_Atlas.png
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/careast_Atlas.png
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/Corel Auto-Preserve/carEast_Atlas.png
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/trash_Atlas.png
+- Assets/Data/Mlie.DestroyedCity/Textures/Things/Building/rubble_Atlas.png
+Dependencies: []

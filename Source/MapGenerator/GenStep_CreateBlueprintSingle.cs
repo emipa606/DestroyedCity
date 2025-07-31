@@ -55,7 +55,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
             mapCenterBlueprintUsed = true;
         }
 
-        ScatterBlueprintAt(loc, mapGeneratorBlueprintDef, map, ref selectedWallStuff);
+        scatterBlueprintAt(loc, mapGeneratorBlueprintDef, map, ref selectedWallStuff);
         selectedWallStuff = null;
     }
 
@@ -64,7 +64,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         return base.CanScatterAt(loc, map) && loc.SupportsStructureType(map, TerrainAffordanceDefOf.Heavy);
     }
 
-    private void ScatterBlueprintAt(IntVec3 loc, MapGeneratorBlueprintDef blueprint, Map map,
+    private void scatterBlueprintAt(IntVec3 loc, MapGeneratorBlueprintDef blueprint, Map map,
         ref ThingDef wallStuff)
     {
         var cellRect = new CellRect(loc.x, loc.z, blueprint.size.x, blueprint.size.z);
@@ -93,12 +93,9 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
             wallStuff = blueprint.buildingMaterial;
         }
 
-        if (wallStuff == null)
-        {
-            wallStuff = RandomWallStuff();
-        }
+        wallStuff ??= randomWallStuff();
 
-        MakeBlueprintRoom(cellRect, blueprint, map, wallStuff);
+        makeBlueprintRoom(cellRect, blueprint, map, wallStuff);
 
         if (!blueprint.createTrigger)
         {
@@ -125,12 +122,12 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         GenSpawn.Spawn(rectTrigger_UnfogArea, cellRect.CenterCell, map);
     }
 
-    private void MakeBlueprintRoom(CellRect mapRect, MapGeneratorBlueprintDef blueprint, Map map, ThingDef stuffDef)
+    private void makeBlueprintRoom(CellRect mapRect, MapGeneratorBlueprintDef blueprint, Map map, ThingDef stuffDef)
     {
-        blueprint.buildingData = CleanUpBlueprintData(blueprint.buildingData);
-        blueprint.floorData = CleanUpBlueprintData(blueprint.floorData);
-        blueprint.pawnData = CleanUpBlueprintData(blueprint.pawnData);
-        blueprint.itemData = CleanUpBlueprintData(blueprint.itemData);
+        blueprint.buildingData = cleanUpBlueprintData(blueprint.buildingData);
+        blueprint.floorData = cleanUpBlueprintData(blueprint.floorData);
+        blueprint.pawnData = cleanUpBlueprintData(blueprint.pawnData);
+        blueprint.itemData = cleanUpBlueprintData(blueprint.itemData);
         if (blueprint.buildingData == null && blueprint.floorData == null)
         {
             Log.ErrorOnce(
@@ -142,7 +139,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
             var a = new IntVec3(mapRect.minX, 0, mapRect.maxZ);
             foreach (var c in mapRect)
             {
-                if (!CheckCell(c, map))
+                if (!checkCell(c, map))
                 {
                     return;
                 }
@@ -155,11 +152,11 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
                 {
                     var c2 = a + new IntVec3(j, 0, -i);
                     var itemPos = j + (blueprint.size.x * i);
-                    var thingDef = TryGetThingDefFromBuildingData(blueprint, itemPos);
-                    var thingRot = TryGetRotationFromBuildingData(blueprint, itemPos);
-                    var terrainDef = TryGetTerrainDefFromFloorData(blueprint, itemPos);
-                    var pawnKindDef = TryGetPawnKindDefFromPawnData(blueprint, itemPos);
-                    var thingDef2 = TryGetItemDefFromItemData(blueprint, itemPos);
+                    var thingDef = tryGetThingDefFromBuildingData(blueprint, itemPos);
+                    var thingRot = tryGetRotationFromBuildingData(blueprint, itemPos);
+                    var terrainDef = tryGetTerrainDefFromFloorData(blueprint, itemPos);
+                    var pawnKindDef = tryGetPawnKindDefFromPawnData(blueprint, itemPos);
+                    var thingDef2 = tryGetItemDefFromItemData(blueprint, itemPos);
                     var list = map.thingGrid.ThingsListAt(c2);
                     foreach (var thing in list)
                     {
@@ -170,12 +167,12 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
 
                     if (thingDef != null || terrainDef != null || pawnKindDef != null || thingDef2 != null)
                     {
-                        ClearCell(c2, map);
+                        clearCell(c2, map);
                     }
 
                     if (!(blueprint.canHaveHoles && Rand.Value < 0.08f))
                     {
-                        TrySetCellAs(c2, thingDef, thingRot, map, stuffDef, terrainDef, pawnKindDef, thingDef2,
+                        trySetCellAs(c2, thingDef, thingRot, map, stuffDef, terrainDef, pawnKindDef, thingDef2,
                             blueprint);
                     }
                 }
@@ -190,7 +187,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
                 GenSpawn.Spawn(rectTrigger, mapRect.CenterCell, map);
             }
 
-            if (allSpawnedPawns == null || allSpawnedPawns.Count <= 0)
+            if (allSpawnedPawns is not { Count: > 0 })
             {
                 return;
             }
@@ -217,7 +214,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         }
     }
 
-    private string CleanUpBlueprintData(string data)
+    private static string cleanUpBlueprintData(string data)
     {
         string result;
         if (data.NullOrEmpty())
@@ -241,7 +238,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         return result;
     }
 
-    private TerrainDef TryGetTerrainDefFromFloorData(MapGeneratorBlueprintDef blueprint, int itemPos)
+    private static TerrainDef tryGetTerrainDefFromFloorData(MapGeneratorBlueprintDef blueprint, int itemPos)
     {
         TerrainDef result;
         if (blueprint.floorData == null || blueprint.floorData.Length - 1 < itemPos ||
@@ -259,7 +256,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         return result;
     }
 
-    private ThingDef TryGetThingDefFromBuildingData(MapGeneratorBlueprintDef blueprint, int itemPos)
+    private static ThingDef tryGetThingDefFromBuildingData(MapGeneratorBlueprintDef blueprint, int itemPos)
     {
         ThingDef result;
         if (blueprint.buildingData == null || blueprint.buildingData.Length - 1 < itemPos ||
@@ -276,7 +273,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         return result;
     }
 
-    private Rot4 TryGetRotationFromBuildingData(MapGeneratorBlueprintDef blueprint, int itemPos)
+    private static Rot4 tryGetRotationFromBuildingData(MapGeneratorBlueprintDef blueprint, int itemPos)
     {
         Rot4 result;
         if (blueprint.buildingData == null || blueprint.buildingData.Length - 1 < itemPos ||
@@ -293,7 +290,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         return result;
     }
 
-    private ThingDef TryGetItemDefFromItemData(MapGeneratorBlueprintDef blueprint, int itemPos)
+    private static ThingDef tryGetItemDefFromItemData(MapGeneratorBlueprintDef blueprint, int itemPos)
     {
         ThingDef result;
         if (blueprint.itemData == null || blueprint.itemData.Length - 1 < itemPos ||
@@ -310,7 +307,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         return result;
     }
 
-    private PawnKindDef TryGetPawnKindDefFromPawnData(MapGeneratorBlueprintDef blueprint, int itemPos)
+    private static PawnKindDef tryGetPawnKindDefFromPawnData(MapGeneratorBlueprintDef blueprint, int itemPos)
     {
         PawnKindDef result;
         if (blueprint.pawnData == null || blueprint.pawnData.Length - 1 < itemPos ||
@@ -327,10 +324,10 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         return result;
     }
 
-    private void ClearCell(IntVec3 c, Map map)
+    private static void clearCell(IntVec3 c, Map map)
     {
         var thingList = c.GetThingList(map);
-        if (!CheckCell(c, map))
+        if (!checkCell(c, map))
         {
             return;
         }
@@ -341,7 +338,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         }
     }
 
-    private bool CheckCell(IntVec3 c, Map map)
+    private static bool checkCell(IntVec3 c, Map map)
     {
         var thingList = c.GetThingList(map);
         foreach (var thing in thingList)
@@ -355,7 +352,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         return true;
     }
 
-    private void TrySetCellAs(IntVec3 c, ThingDef thingDef, Rot4 thingRot, Map map, ThingDef stuffDef = null,
+    private void trySetCellAs(IntVec3 c, ThingDef thingDef, Rot4 thingRot, Map map, ThingDef stuffDef = null,
         TerrainDef terrainDef = null, PawnKindDef pawnKindDef = null, ThingDef itemDef = null,
         MapGeneratorBlueprintDef blueprint = null)
     {
@@ -382,7 +379,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
             {
                 if (thingDef != null && stuffDef != null)
                 {
-                    map.terrainGrid.SetTerrain(c, CorrespondingTileDef(stuffDef));
+                    map.terrainGrid.SetTerrain(c, correspondingTileDef(stuffDef));
                 }
             }
 
@@ -457,7 +454,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
                     thingDef2 = null;
                 }
 
-                var thing2 = TryGetTreasure(itemDef, thingDef2);
+                var thing2 = tryGetTreasure(itemDef, thingDef2);
                 thing2 = GenSpawn.Spawn(thing2, c, map);
                 if (thing2.TryGetComp<CompForbiddable>() != null)
                 {
@@ -475,10 +472,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
                 return;
             }
 
-            if (faction == null)
-            {
-                faction = Find.FactionManager.FirstFactionOfDef(blueprint.factionDef);
-            }
+            faction ??= Find.FactionManager.FirstFactionOfDef(blueprint.factionDef);
 
             if (faction == null)
             {
@@ -535,16 +529,13 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
                 return;
             }
 
-            if (allSpawnedPawns == null)
-            {
-                allSpawnedPawns = [];
-            }
+            allSpawnedPawns ??= [];
 
             allSpawnedPawns.Add(pawn);
         }
     }
 
-    private Thing TryGetTreasure(ThingDef treasureDef, ThingDef stuffDef)
+    private static Thing tryGetTreasure(ThingDef treasureDef, ThingDef stuffDef)
     {
         Thing result;
         if (treasureDef == null)
@@ -574,7 +565,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         return result;
     }
 
-    private ThingDef RandomWallStuff()
+    private static ThingDef randomWallStuff()
     {
         return (from def in DefDatabase<ThingDef>.AllDefs
             where def.IsStuff && def.stuffProps.CanMake(ThingDefOf.Wall) && def.BaseFlammability < 0.5f &&
@@ -582,7 +573,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
             select def).RandomElement();
     }
 
-    public TerrainDef CorrespondingTileDef(ThingDef stuffDef)
+    private static TerrainDef correspondingTileDef(ThingDef stuffDef)
     {
         TerrainDef terrainDef = null;
         var allDefsListForReading = DefDatabase<TerrainDef>.AllDefsListForReading;
@@ -608,10 +599,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
             }
         }
 
-        if (terrainDef == null)
-        {
-            terrainDef = TerrainDefOf.Concrete;
-        }
+        terrainDef ??= TerrainDefOf.Concrete;
 
         return terrainDef;
     }

@@ -8,23 +8,23 @@ namespace MapGenerator;
 
 public class GenStep_CreateRuinVillage : GenStep_Scatterer
 {
-    private readonly IntRange ruinOffsetHorizontalRange = new IntRange(5, 15);
+    private readonly IntRange ruinOffsetHorizontalRange = new(5, 15);
 
-    private readonly IntRange ruinOffsetVerticalRange = new IntRange(5, 15);
+    private readonly IntRange ruinOffsetVerticalRange = new(5, 15);
 
     private readonly List<IntVec3> usedCells = [];
 
     private int ruinCountDown;
 
-    private IntRange ruinCountRange = new IntRange(3, 8);
+    private IntRange ruinCountRange = new(3, 8);
 
-    private IntRange ruinDistanceRange = new IntRange(4, 10);
+    private IntRange ruinDistanceRange = new(4, 10);
 
     private bool ruinsHaveBigHoles;
 
     private ThingDef selectedWallStuff;
 
-    public IntRange villageCountRange = new IntRange(1, 1);
+    public IntRange villageCountRange = new(1, 1);
 
     public override int SeedPart => 1158116083;
 
@@ -35,10 +35,10 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
         var scatterDone = false;
         while (ruinCountDown > 0)
         {
-            var intVec = TryFindValidScatterCellNear(loc, map);
+            var intVec = tryFindValidScatterCellNear(loc, map);
             if (intVec != IntVec3.Invalid)
             {
-                ScatterRuinAt(intVec, Rand.Value > 0.4f && !scatterDone, map, ref selectedWallStuff);
+                scatterRuinAt(intVec, Rand.Value > 0.4f && !scatterDone, map, ref selectedWallStuff);
                 if (Rand.Value > 0.4f && !scatterDone)
                 {
                     scatterDone = true;
@@ -58,7 +58,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
         return base.CanScatterAt(loc, map) && loc.SupportsStructureType(map, TerrainAffordanceDefOf.Heavy);
     }
 
-    private IntVec3 TryFindValidScatterCellNear(IntVec3 loc, Map map)
+    private IntVec3 tryFindValidScatterCellNear(IntVec3 loc, Map map)
     {
         IntVec3 result;
         if (usedCells.Count == 0)
@@ -203,7 +203,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
         return result;
     }
 
-    private void ScatterRuinAt(IntVec3 loc, bool placeWell, Map map, ref ThingDef wallStuff)
+    private void scatterRuinAt(IntVec3 loc, bool placeWell, Map map, ref ThingDef wallStuff)
     {
         var randomInRange = ruinOffsetHorizontalRange.RandomInRange;
         var randomInRange2 = ruinOffsetVerticalRange.RandomInRange;
@@ -231,29 +231,26 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
             usedSpots.Add(intVec);
         }
 
-        if (wallStuff == null)
-        {
-            wallStuff = RandomWallStuff();
-        }
+        wallStuff ??= randomWallStuff();
 
         if (placeWell)
         {
-            MakeWell(mapRect, wallStuff, map);
+            makeWell(mapRect, wallStuff, map);
         }
         else
         {
             if (ruinsHaveBigHoles)
             {
-                MakeShed(mapRect, wallStuff, map, true, true);
+                makeShed(mapRect, wallStuff, map, true, true);
             }
             else
             {
-                MakeShed(mapRect, wallStuff, map, Rand.Value > 0.5f);
+                makeShed(mapRect, wallStuff, map, Rand.Value > 0.5f);
             }
         }
     }
 
-    private void MakeWell(CellRect mapRect, ThingDef stuffDef, Map map)
+    private void makeWell(CellRect mapRect, ThingDef stuffDef, Map map)
     {
         var centerCell = mapRect.CenterCell;
         mapRect = new CellRect(centerCell.x - 2, centerCell.z - 2, 5, 5);
@@ -270,7 +267,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
                     (intVec.x != mapRect.maxX || intVec.z != mapRect.minZ) &&
                     (intVec.x != mapRect.maxX || intVec.z != mapRect.maxZ))
                 {
-                    TrySetCellAsTile(intVec, stuffDef, map);
+                    trySetCellAsTile(intVec, stuffDef, map);
                 }
                 else
                 {
@@ -288,7 +285,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
         }
     }
 
-    private void MakeShed(CellRect mapRect, ThingDef stuffDef, Map map, bool leaveDoorGaps = true,
+    private void makeShed(CellRect mapRect, ThingDef stuffDef, Map map, bool leaveDoorGaps = true,
         bool leaveBigHoles = false)
     {
         mapRect.ClipInsideMap(map);
@@ -300,7 +297,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
                 if (!leaveDoorGaps && !leaveBigHoles || leaveBigHoles && Rand.Value >= 0.25f ||
                     !leaveBigHoles && Rand.Value >= 0.05f)
                 {
-                    TrySetCellAsWall(intVec, map, stuffDef);
+                    trySetCellAsWall(intVec, map, stuffDef);
                 }
             }
             else
@@ -313,12 +310,12 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
                 var edifice = intVec.GetEdifice(map);
                 edifice?.Destroy();
 
-                map.terrainGrid.SetTerrain(intVec, CorrespondingTileDef(stuffDef));
+                map.terrainGrid.SetTerrain(intVec, correspondingTileDef(stuffDef));
             }
         }
     }
 
-    private void TrySetCellAsWall(IntVec3 c, Map map, ThingDef stuffDef)
+    private void trySetCellAsWall(IntVec3 c, Map map, ThingDef stuffDef)
     {
         var thingList = c.GetThingList(map);
         foreach (var thing1 in thingList)
@@ -334,13 +331,13 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
             thingList[j].Destroy();
         }
 
-        map.terrainGrid.SetTerrain(c, CorrespondingTileDef(stuffDef));
+        map.terrainGrid.SetTerrain(c, correspondingTileDef(stuffDef));
         var wall = ThingDefOf.Wall;
         var thing = ThingMaker.MakeThing(wall, stuffDef);
         GenSpawn.Spawn(thing, c, map);
     }
 
-    private void TrySetCellAsTile(IntVec3 c, ThingDef stuffDef, Map map)
+    private void trySetCellAsTile(IntVec3 c, ThingDef stuffDef, Map map)
     {
         var thingList = c.GetThingList(map);
         foreach (var thing in thingList)
@@ -356,10 +353,10 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
             thingList[j].Destroy();
         }
 
-        map.terrainGrid.SetTerrain(c, CorrespondingTileDef(stuffDef));
+        map.terrainGrid.SetTerrain(c, correspondingTileDef(stuffDef));
     }
 
-    private ThingDef RandomWallStuff()
+    private static ThingDef randomWallStuff()
     {
         return (from def in DefDatabase<ThingDef>.AllDefs
             where def.IsStuff && def.stuffProps.CanMake(ThingDefOf.Wall) && def.BaseFlammability < 0.5f &&
@@ -367,7 +364,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
             select def).RandomElement();
     }
 
-    private TerrainDef CorrespondingTileDef(ThingDef stuffDef)
+    private static TerrainDef correspondingTileDef(ThingDef stuffDef)
     {
         TerrainDef terrainDef = null;
         var allDefsListForReading = DefDatabase<TerrainDef>.AllDefsListForReading;
@@ -393,10 +390,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
             }
         }
 
-        if (terrainDef == null)
-        {
-            terrainDef = TerrainDefOf.Concrete;
-        }
+        terrainDef ??= TerrainDefOf.Concrete;
 
         return terrainDef;
     }

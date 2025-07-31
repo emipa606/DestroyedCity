@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Old Car -->
+  <Careast.label>Old Car</Careast.label>
+  <!-- EN: A old car, deconstruct for resources. -->
+  <Careast.description>A old car, deconstruct for resources.</Careast.description>
+  <!-- EN: Crate -->
+  <crateA.label>Crate</crateA.label>
+  <!-- EN: A crate with a random resource inside -->
+  <crateA.description>A crate with a random resource inside</crateA.description>
+  <!-- EN: Crate -->
+  <crateB.label>Crate</crateB.label>
+  <!-- EN: A crate with a random resource inside -->
+  <crateB.description>A crate with a random resource inside</crateB.description>
+  <!-- EN: Crate -->
+  <crateC.label>Crate</crateC.label>
+  <!-- EN: A crate with a random resource inside -->
+  <crateC.description>A crate with a random resource inside</crateC.description>
+  <!-- EN: Crate -->
+  <crateD.label>Crate</crateD.label>
+  <!-- EN: A crate with a random resource inside -->
+  <crateD.description>A crate with a random resource inside</crateD.description>
+  <!-- EN: air plane crash -->
+  <Plane.label>air plane crash</Plane.label>
+  <!-- EN: An old crash site, deconstruct for resources. -->
+  <Plane.description>An old crash site, deconstruct for resources.</Plane.description>
+  <!-- EN: Old Shelves -->
+  <shelves.label>Old Shelves</shelves.label>
+  <!-- EN: Old shelves, deconstruct for resources. -->
+  <shelves.description>Old shelves, deconstruct for resources.</shelves.description>
+  <!-- EN: Tires -->
+  <tirestack.label>Tires</tirestack.label>
+  <!-- EN: A stack of rotten tires -->
+  <tirestack.description>A stack of rotten tires</tirestack.description>
+  <!-- EN: Trash -->
+  <Trash.label>Trash</Trash.label>
+  <!-- EN: Trash from a long gone civilization -->
+  <Trash.description>Trash from a long gone civilization</Trash.description>
+  <!-- EN: Festive Reef -->
+  <xmasreef.label>Festive Reef</xmasreef.label>
+  <!-- EN: A festive reef, livens up any area -->
+  <xmasreef.description>A festive reef, livens up any area</xmasreef.description>
+</LanguageData>

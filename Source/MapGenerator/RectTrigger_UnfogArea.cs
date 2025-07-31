@@ -12,7 +12,7 @@ public class RectTrigger_UnfogArea : RectTrigger
         Scribe_Values.Look(ref destroyIfUnfogged, "destroyIfUnfogged", true);
     }
 
-    public override void Tick()
+    protected override void Tick()
     {
         if (!this.IsHashIntervalTick(60))
         {
