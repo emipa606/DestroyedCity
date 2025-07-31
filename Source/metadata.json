@@ -4,5 +4,11 @@
   "CanRemove": "2",
   "PreviewVersion": "1.5",
   "SocialImageSet": true,
-  "SearchTags": " map generation"
+  "SearchTags": " map generation",
+  "Patches": true,
+  "Defs": true,
+  "Assemblies": true,
+  "LinesOfCode": 67752,
+  "LinesOfXML": 56493,
+  "CodeBaseSize": 80
 }
