@@ -28,7 +28,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
 
     public override int SeedPart => 1158116083;
 
-    protected override void ScatterAt(IntVec3 loc, Map map, GenStepParams genStepParams, int stackCount = 1)
+    protected override void ScatterAt(IntVec3 loc, Map map, GenStepParams parms, int count = 1)
     {
         ruinCountDown = ruinCountRange.RandomInRange;
         ruinsHaveBigHoles = Rand.Value > 0.5f;
@@ -168,24 +168,22 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
                 }
 
                 var isValid = invalid.IsValid;
-                if (isValid)
+                if (isValid &&
+                    Math.Abs(invalid.x) / 2 < ruinDistanceRange.max &&
+                    Math.Abs(invalid.z) / 2 < ruinDistanceRange.max)
                 {
-                    if (Math.Abs(invalid.x) / 2 < ruinDistanceRange.max &&
-                        Math.Abs(invalid.z) / 2 < ruinDistanceRange.max)
+                    if (Math.Abs(invalid.x) > Math.Abs(invalid.z))
                     {
-                        if (Math.Abs(invalid.x) > Math.Abs(invalid.z))
-                        {
-                            ruinDistanceRange.min = Math.Abs(invalid.x) / 2;
-                        }
-                        else
-                        {
-                            ruinDistanceRange.min = Math.Abs(invalid.z) / 2;
-                        }
+                        ruinDistanceRange.min = Math.Abs(invalid.x) / 2;
+                    }
+                    else
+                    {
+                        ruinDistanceRange.min = Math.Abs(invalid.z) / 2;
+                    }
 
-                        if (ruinDistanceRange.min > ruinDistanceRange.max)
-                        {
-                            ruinDistanceRange.max = ruinDistanceRange.min + 4;
-                        }
+                    if (ruinDistanceRange.min > ruinDistanceRange.max)
+                    {
+                        ruinDistanceRange.max = ruinDistanceRange.min + 4;
                     }
                 }
 
@@ -250,7 +248,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
         }
     }
 
-    private void makeWell(CellRect mapRect, ThingDef stuffDef, Map map)
+    private static void makeWell(CellRect mapRect, ThingDef stuffDef, Map map)
     {
         var centerCell = mapRect.CenterCell;
         mapRect = new CellRect(centerCell.x - 2, centerCell.z - 2, 5, 5);
@@ -285,7 +283,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
         }
     }
 
-    private void makeShed(CellRect mapRect, ThingDef stuffDef, Map map, bool leaveDoorGaps = true,
+    private static void makeShed(CellRect mapRect, ThingDef stuffDef, Map map, bool leaveDoorGaps = true,
         bool leaveBigHoles = false)
     {
         mapRect.ClipInsideMap(map);
@@ -315,7 +313,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
         }
     }
 
-    private void trySetCellAsWall(IntVec3 c, Map map, ThingDef stuffDef)
+    private static void trySetCellAsWall(IntVec3 c, Map map, ThingDef stuffDef)
     {
         var thingList = c.GetThingList(map);
         foreach (var thing1 in thingList)
@@ -337,7 +335,7 @@ public class GenStep_CreateRuinVillage : GenStep_Scatterer
         GenSpawn.Spawn(thing, c, map);
     }
 
-    private void trySetCellAsTile(IntVec3 c, ThingDef stuffDef, Map map)
+    private static void trySetCellAsTile(IntVec3 c, ThingDef stuffDef, Map map)
     {
         var thingList = c.GetThingList(map);
         foreach (var thing in thingList)

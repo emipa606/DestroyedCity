@@ -18,7 +18,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
 
     public override int SeedPart => 1158116085;
 
-    protected override void ScatterAt(IntVec3 loc, Map map, GenStepParams genStepParams, int stackCount = 1)
+    protected override void ScatterAt(IntVec3 loc, Map map, GenStepParams parms, int count = 1)
     {
         if (mapCenterBlueprintUsed)
         {
@@ -106,19 +106,6 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
             (RectTrigger_UnfogArea)ThingMaker.MakeThing(ThingDef.Named("RectTrigger_UnfogArea"));
         rectTrigger_UnfogArea.destroyIfUnfogged = true;
         rectTrigger_UnfogArea.Rect = cellRect;
-        //bool flag5 = blueprint.TriggerLetterMessageText != null;
-        //if (flag5)
-        //{
-        //	bool flag6 = blueprint.TriggerLetterLabel != null;
-        //	if (flag6)
-        //	{
-        //		rectTrigger_UnfogArea.letter = new Letter(Translator.Translate(blueprint.TriggerLetterLabel), Translator.Translate(blueprint.TriggerLetterMessageText), blueprint.TriggerLetterType, cellRect.CenterCell);
-        //	}
-        //	else
-        //	{
-        //		rectTrigger_UnfogArea.letter = new Letter("", Translator.Translate(blueprint.TriggerLetterMessageText), blueprint.TriggerLetterType, cellRect.CenterCell);
-        //	}
-        //}
         GenSpawn.Spawn(rectTrigger_UnfogArea, cellRect.CenterCell, map);
     }
 
@@ -137,12 +124,9 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         else
         {
             var a = new IntVec3(mapRect.minX, 0, mapRect.maxZ);
-            foreach (var c in mapRect)
+            if (mapRect.Any(cell => !checkCell(cell, map)))
             {
-                if (!checkCell(c, map))
-                {
-                    return;
-                }
+                return;
             }
 
             allSpawnedPawns = null;
@@ -158,12 +142,6 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
                     var pawnKindDef = tryGetPawnKindDefFromPawnData(blueprint, itemPos);
                     var thingDef2 = tryGetItemDefFromItemData(blueprint, itemPos);
                     var list = map.thingGrid.ThingsListAt(c2);
-                    foreach (var thing in list)
-                    {
-                        if (thing.def == thingDef)
-                        {
-                        }
-                    }
 
                     if (thingDef != null || terrainDef != null || pawnKindDef != null || thingDef2 != null)
                     {
@@ -182,7 +160,6 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
             {
                 var rectTrigger = (RectTrigger)ThingMaker.MakeThing(ThingDefOf.RectTrigger);
                 rectTrigger.Rect = mapRect.ExpandedBy(1).ClipInsideMap(map);
-                //rectTrigger.letter = new Letter(Translator.Translate("LetterLabelAncientShrineWarning"), Translator.Translate("AncientShrineWarning"), 1, mapRect.CenterCell);
                 rectTrigger.destroyIfUnfogged = false;
                 GenSpawn.Spawn(rectTrigger, mapRect.CenterCell, map);
             }
@@ -224,12 +201,11 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
         else
         {
             var text = "";
-            foreach (var c in data)
+            foreach (var c in data.Where(c =>
+                         char.IsLetterOrDigit(c) ||
+                         c is ',' or '.' or '#' or '~' or '?' or '!' or '-' or '+' or '*' or '@'))
             {
-                if (char.IsLetterOrDigit(c) || c is ',' or '.' or '#' or '~' or '?' or '!' or '-' or '+' or '*' or '@')
-                {
-                    text += c.ToString();
-                }
+                text += c.ToString();
             }
 
             result = text.NullOrEmpty() ? null : text;
@@ -414,7 +390,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
                 if (isApparel)
                 {
                     var num = 0;
-                    for (;;)
+                    while (true)
                     {
                         thingDef2 = DefDatabase<ThingDef>.GetRandom();
                         if (thingDef2.IsStuff &&
@@ -426,14 +402,9 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
                         num++;
                         if (num > 100)
                         {
-                            goto Block_17;
+                            break;
                         }
                     }
-
-                    goto IL_18F;
-                    Block_17:
-                    thingDef2 = DefDatabase<ThingDef>.GetNamedSilentFail("Synthread");
-                    IL_18F: ;
                 }
                 else
                 {
@@ -481,11 +452,7 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
                     case FactionSelection.none:
                     {
                         faction = Find.FactionManager.AllFactions.RandomElementByWeight(fac =>
-                            fac.def.settlementGenerationWeight);
-                        if (faction == null)
-                        {
-                            faction = Faction.OfMechanoids;
-                        }
+                            fac.def.settlementGenerationWeight) ?? Faction.OfMechanoids;
 
                         break;
                     }
@@ -494,26 +461,19 @@ public class GenStep_CreateBlueprintSingle : GenStep_Scatterer
                         faction = (from fac in Find.FactionManager.AllFactions
                             where fac.HostileTo(Faction.OfPlayer)
                             select fac).RandomElementByWeight(fac =>
-                            101f - fac.def.settlementGenerationWeight);
-                        if (faction == null)
-                        {
-                            faction = Faction.OfMechanoids;
-                        }
+                            101f - fac.def.settlementGenerationWeight) ?? Faction.OfMechanoids;
 
                         break;
                     }
                     case FactionSelection.friendly:
                     {
                         faction = (from fac in Find.FactionManager.AllFactions
-                            where !fac.HostileTo(Faction.OfPlayer) && fac.PlayerGoodwill > 0f &&
-                                  fac != Faction.OfPlayer
-                            select fac).RandomElementByWeight(fac =>
-                            101f - fac.def.settlementGenerationWeight);
-                        if (faction == null)
-                        {
-                            faction = Find.FactionManager.AllFactions.RandomElementByWeight(fac =>
-                                fac.def.settlementGenerationWeight);
-                        }
+                                      where !fac.HostileTo(Faction.OfPlayer) && fac.PlayerGoodwill > 0f &&
+                                            fac != Faction.OfPlayer
+                                      select fac).RandomElementByWeight(fac =>
+                                      101f - fac.def.settlementGenerationWeight) ??
+                                  Find.FactionManager.AllFactions.RandomElementByWeight(fac =>
+                                      fac.def.settlementGenerationWeight);
 
                         break;
                     }

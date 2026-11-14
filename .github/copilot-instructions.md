@@ -1,70 +1,67 @@
-# GitHub Copilot Instructions for RimWorld Modding Project
+# GitHub Copilot Instructions for Destroyed City (Continued) Mod
 
 ## Mod Overview and Purpose
 
-This mod enhances map generation in RimWorld by introducing advanced blueprint generation functionality. It aims to provide players with varied and immersive village and ruin structures that enrich the gameplay experience. By utilizing custom map generation steps, the mod scatters detailed blueprints across the map, ensuring unique encounters every time a new game is started.
+Destroyed City (Continued) is an update to the RK Skullers mod, enhancing the RimWorld experience with more destroyed buildings, custom difficulty settings, and additional floor blocks. The mod leverages the latest features of RimWorld, including improved support for Asset Bundles, to deliver a richer and more varied gameplay experience.
 
 ## Key Features and Systems
 
-1. **Blueprint Generation:**
-   - Generate single blueprints or entire villages (as seen in `GenStep_CreateBlueprintSingle` and `GenStep_CreateBlueprintVillage`).
-   - Ability to create ruins with customizable elements (featured in `GenStep_CreateRuinVillage`).
-
-2. **Terrain and Building Definitions:**
-   - Dynamic terrain and building selection to match the blueprint data.
-   - Use of `TryGetTerrainDefFromFloorData`, `TryGetThingDefFromBuildingData`, and similar methods to fetch game definitions.
-
-3. **Cell Manipulation:**
-   - Methods like `ClearCell`, `CheckCell`, and `TrySetCellAs` efficiently handle map cells during generation.
-
-4. **Randomization:**
-   - Randomly pick wall and tile materials to diversify the structures (`RandomWallStuff` and `CorrespondingTileDef`).
-
-5. **Unfogging Areas:**
-   - The `RectTrigger_UnfogArea` class allows for dynamically generated areas to be revealed to the player, increasing engagement.
+- **Custom Difficulty**: Adds a custom difficulty that increases the raid population growth rate and lowers their health, making encounters more challenging.
+- **Destroyed Buildings**: Introduces a variety of new destroyed buildings to the map generation process.
+- **Floor Blocks**: Adds two new floor blocks, "Road" and "Sidewalk," with specific properties like beauty ratings and construction costs.
+- **Increased Ore and Plant Vegetation**: Enhances the natural resources available on the map.
+- **Seasonal Easter Eggs**: Incorporates seasonal elements into the map generation.
+- **Custom Map Generation**: Includes new ruins, roads, and other objects that add to the overall map complexity and aesthetics.
 
 ## Coding Patterns and Conventions
 
-- **Class Design:**
-  - Each feature or functionality is encapsulated within its class following class naming conventions like `GenStep_`.
+This mod follows a structured coding pattern, with a focus on modularity and maintainability. Key aspects include:
 
-- **Methods Naming:**
-  - Preference for `Try` prefixing methods that return definitions, indicating potential failure (e.g., `TryGetThingDefFromItemData`).
-
-- **Modular Methods:**
-  - Emphasis on breaking down tasks into smaller methods, allowing for easier maintenance and logic reuse.
-
-- **Scanning and Validation:**
-  - Use of helper methods to verify condition prerequisites, improving reliability (`CheckCell`, `IsPositionValidForBlueprint`).
+- **Modular Design**: The mod is divided into separate classes and files, each responsible for a specific aspect of map generation or difficulty settings.
+- **Harmony Patching**: Extensively uses Harmony patching to modify vanilla RimWorld behavior without altering the core game files.
+- **XML Integration**: Utilizes XML files to define new game elements such as terrain, buildings, and map generation steps.
+- **Commenting and Documentation**: Provides detailed comments and documentation within the codebase to ensure clarity and ease of maintenance.
 
 ## XML Integration
 
-This mod heavily depends on XML for asset definition:
+XML files are crucial for defining new game elements in RimWorld. Key XML files in this mod include:
 
-- Blueprint data is parsed and cleaned using methods such as `CleanUpBlueprintData`.
-- XML is crucial for defining structure templates and item placement, interfacing directly with the code via `MapGeneratorBlueprintDef`.
+- **TerrainDefs**: Defines new terrain types, such as the "Road" and "Sidewalk" floor blocks.
+- **ThingDefs**: Contains definitions for buildings and other in-game objects, including damage definitions and minified versions.
+- **MapGeneratorDefs**: Specifies new map generation steps, such as creating blueprint villages and ruins.
 
 ## Harmony Patching
 
-- Ensure compatibility and dynamic modifications across game mechanics. 
-- Patches can be strategically applied to replace native game methods, integrating deeply with RimWorld's core systems.
-- Ideal for injecting custom logic where built-in functions are inadequate.
+Harmony patching is employed to modify existing game functionality without changing the original codebase. Key patches in this mod include:
 
-## Suggestions for GitHub Copilot
+- **Raid Population Growth**: Adjusts the growth rate of raid populations to increase difficulty.
+- **Building Placement**: Ensures buildings do not spawn into or clip mountains.
+- **Mechanoid Combat Power**: Reduces the combat power of mechanoids to make them more fair.
+- **Resource Spawn**: Tweaks the spawn rates of ore chunks and plant vegetation.
 
-1. **Logic Extension:**
-   - Suggest snippets for additional custom GenSteps if needed, based on existing patterns in `GenStep_CreateBlueprintSingle` and others.
+## Suggestions for Copilot
 
-2. **Error Handling:**
-   - Provide suggestions for robust error checking around blueprint data parsing and cell positioning.
+To make the most of GitHub Copilot when working on the Destroyed City (Continued) mod, consider the following suggestions:
 
-3. **Enhanced Customization:**
-   - Recommend potential options for further randomization parameters (e.g., advanced terrain types) within blueprint generation.
+- **Use Descriptive File and Class Names**: Copilot performs better when it can understand the context and purpose of the code being written. Descriptive names help Copilot generate more relevant suggestions.
+- **Comment Clearly**: Provide clear comments around complex logic or patches to guide Copilot in generating accurate and contextually appropriate code.
+- **Leverage XML for New Elements**: When defining new game elements, use XML files to keep the mod organized and maintainable. Copilot can help generate and update XML definitions.
+- **Review and Test Code**: Always review and test generated code thoroughly. Copilot suggestions are helpful but should be verified for correctness and compatibility with the mod's existing codebase.
 
-4. **Performance Optimizations:**
-   - Propose optimizations in repetitive methods cycles, leveraging LINQ for processing collections when appropriate.
+By following these guidelines, developers can effectively utilize GitHub Copilot to enhance the Destroyed City (Continued) mod and continue to improve the RimWorld experience.
 
-5. **Documentation:**
-   - Insert comments and documentation suggestions throughout to maintain clarity on method purposes and usage examples.
+## Project Solution Guidelines
+- Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
+- Use these in-solution XML files as the primary files for reference and modification.
+- The `.github/copilot-instructions.md` file is included in the solution under the `.github` solution folder, so it should be read/modified from within the solution instead of using paths outside the solution. Update this file once only, as it and the parent-path solution reference point to the same file in this workspace.
+- When making functional changes in this mod, ensure the documented features stay in sync with implementation; use the in-solution `.github` copy as the primary file.
+- In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
+- For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.
 
-By following this comprehensive instruction guide, GitHub Copilot can significantly enhance mod development productivity, ensuring that the generated suggestions align well with the project's goals and coding practices.
+
+## Hard rules (must follow)
+- Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
+- Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+- When mentioning SonarQube issues, automatically use the SonarQube MCP service to fetch and address issues instead of making inferred fixes without querying SonarQube first.
+- When mentioning the rimworld log, automatically use the Rimworld MCP service to fetch the log.
+

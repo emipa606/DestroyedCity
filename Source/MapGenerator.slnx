@@ -6,4 +6,25 @@
     <BuildType Name="Release" />
   </Configurations>
   <Project Path="MapGenerator/MapGenerator.csproj" />
+  <Folder Name="/XML/1.7/Defs/TerrainDefs/">
+    <File Path="../1.7/Defs/TerrainDefs/Terrain_Floors.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/MapGeneratorBlueprintDefs/">
+    <File Path="../1.7/Defs/MapGeneratorBlueprintDefs/MapGeneratorBlueprints_BasicRooms.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/ThingDefs/">
+    <File Path="../1.7/Defs/ThingDefs/MapGenerators_RectTrigger_UnfogArea.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/ThingDefs_Buildings/">
+    <File Path="../1.7/Defs/ThingDefs_Buildings/Buildings_Structure.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/MapGeneratorDefs/">
+    <File Path="../1.7/Defs/MapGeneratorDefs/MapGenerators_BlueprintVillage.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Patches/">
+    <File Path="../1.7/Patches/MapGen.xml" />
+  </Folder>
 </Solution>

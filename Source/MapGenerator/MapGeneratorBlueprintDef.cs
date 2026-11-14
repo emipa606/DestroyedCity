@@ -19,9 +19,11 @@ public class MapGeneratorBlueprintDef : Def
     public readonly bool mapCenterBlueprint = false;
 
     public readonly float pawnSpawnChance = 0f;
-    public string buildingData;
 
-    //public LetterType TriggerLetterType = 1;
+    public string TriggerLetterLabel = null;
+
+    public string TriggerLetterMessageText = null;
+    public string buildingData;
 
     public Dictionary<string, ThingDef> buildingLegend;
 
@@ -44,8 +46,4 @@ public class MapGeneratorBlueprintDef : Def
     public Dictionary<string, Rot4> rotationLegend;
 
     public IntVec2 size;
-
-    public string TriggerLetterLabel = null;
-
-    public string TriggerLetterMessageText = null;
 }

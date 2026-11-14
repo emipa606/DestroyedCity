@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -78,14 +79,6 @@ public class RectTrigger_UnfogArea : RectTrigger
 
     private bool IsRectUnfogged(Map map)
     {
-        foreach (var c in Rect.Cells)
-        {
-            if (map.fogGrid.IsFogged(c))
-            {
-                return false;
-            }
-        }
-
-        return true;
+        return Rect.Cells.All(c => !map.fogGrid.IsFogged(c));
     }
 }
