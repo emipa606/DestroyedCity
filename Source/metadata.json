@@ -8,8 +8,8 @@
   "Patches": true,
   "Defs": true,
   "Assemblies": true,
-  "LinesOfCode": 67752,
-  "LinesOfXML": 56493,
+  "LinesOfCode": 66133,
+  "LinesOfXML": 56885,
   "CodeBaseSize": 80,
   "LastXmlCleaning": "2025-07-31T20:57:41.1892032+02:00"
 }
