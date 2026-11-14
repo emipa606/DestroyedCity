@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>Destroyed City (Continued)</name>
+  <name>[1.6] Destroyed City (Continued)</name>
   <packageId>Mlie.DestroyedCity</packageId>
   <author>RK Skuller</author>
   <url>https://github.com/emipa606/DestroyedCity</url>
@@ -13,8 +13,9 @@
 Update of RK Skullers mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=787532364
 
-[b]The release of RimWorld 1.6 added improved support for [url=https://github.com/emipa606/AssetBuilder/blob/main/README.md]Asset Bundles[/url][/b].
-To avoid doubling the size of the mod, it was re-released using only Asset Bundles, you can find the previous version of this mod [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2190314124]here[/url].
+[b]The release of RimWorld 1.7 added a system where assets like textures and sounds can be cached to improve performance[/b].
+To avoid doubling the size of the mod, it was re-released with only this cache included, you can find the new version of this mod [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3839930316]here[/url].
+This version will not receive any further updates.
 
 - Not sure if everything works as before since the code has change massively since A15 but it seems to work ok
 
@@ -23,7 +24,7 @@ To avoid doubling the size of the mod, it was re-released using only Asset Bundl
 [table]
 	[tr]
 		[td][url=https://discord.gg/h5TY6DA][img]https://img.litet.net/logos/Discord.png[/img][/url][/td]
-		[td][url=https://github.com/emipa606/DestroyedCity][img]https://img.litet.net/logos/Github.png[/img][/url][/td]
+		[td][url=https://github.com/emipa606/DestroyedCity/tree/assetbundles][img]https://img.litet.net/logos/Github.png[/img][/url][/td]
     [/tr]
     [tr]
         [td][img]https://img.litet.net/logos/SafeToAdd.png[/img][/td]
@@ -124,6 +125,8 @@ Update 1.01 :
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
 [*] Use [url=https://github.com/RimSort/RimSort/releases/latest]RimSort[/url] to sort your mods
-[/list]  | tags:  map generation</description>
-  <modVersion IgnoreIfNoMatchingField="True">1.6.0</modVersion>
+[/list]  | tags:  map generation 
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3538979939][img]https://img.shields.io/github/v/release/emipa606/DestroyedCity?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url] | map generation</description>
+  <modVersion IgnoreIfNoMatchingField="True">1.6.1</modVersion>
 </ModMetaData>
